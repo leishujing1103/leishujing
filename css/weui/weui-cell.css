@@ -1,0 +1,42 @@
+.weui-cells {
+    font-size: 17px;
+    line-height: 1.47058824;
+    background-color: #ffffff;
+    overflow: hidden;   /*子元素超出父元素就隐藏 */
+    position: relative;
+    margin-top: 1.17647059em;   /*当前文字大小的比例 */
+}
+/* border-top? border_botton?
+盒子模型的一部分
+*/
+.weui-cell:before {
+/* 不影响父元素的盒子模型 */
+    content: "";   
+    /* 定位会让元素离开文档流 */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    border-top: 1px solid #e5e5e5;
+    /* background-color: red; */
+    transform: scaleY(.5);  /* 在Y轴上缩小0.5倍，也就是从下往上压扁一半 */
+    transform-origin: 0 0;  /*基点（左上角）不变 ，左下角是：0 100% */
+}
+.weui-cell:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    border-bottom: 1px solid  #e5e5e5;
+    transform: scaleY(.5);
+    transform-origin: 0 100%;
+}
+.weui-cell {
+     padding: 10px 15px;  /*上下10px,左右15px */
+     position: relative;
+     display:flex;  /*弹性布局，接管内部盒子的布局，文字和图片位于同行*/
+     align-items: center;  /*纵轴方向上居中（文字--支付在图片高度上居中）*/
+}
