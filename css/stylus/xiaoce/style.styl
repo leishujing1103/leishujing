@@ -1,0 +1,68 @@
+$fz = 12px //定义变量
+$text_color = #343434
+$bgc = green
+html
+    font-size $fz
+    height 100vh
+    font-family -apple-system, sans-serif
+    // 优化文字边缘，抗锯齿
+    text-rendering  optimizeLegibility
+    color #333333
+    color $text-color
+    background-color $bgc
+
+img
+    border-style none
+    width auto
+    height auto
+
+body
+    font-size $fz
+    overflow-y scroll
+    -webkit-overflow-scrolling touch
+
+.book-card
+    max-width 720px
+    margin 0 auto
+    margin-bottom 12px
+    box-shadow 0 1px 2px 0 rgba(0,0,0,.15)
+    background-color #ffffff
+
+.book-bought
+    display flex
+    align-items center //  
+    border-top 1px solid #ecf0f3
+    cursor pointer
+    padding 8px 22px 8px 15px
+    .label
+        color #666666
+        font-size 16px
+        font-weight 400
+        display inline-flex //在垂直方向上居中
+        align-items center //在垂直方向上居中
+        // img 
+        //     vertical-align middle/*元素的垂直对齐,把此元素放置在父元素的中部*/
+        flex-shrink 0
+    .users
+        height 24px
+        overflow hidden
+        display inline-block
+        margin-left 24px
+        flex-grow 1
+        .user
+            width 24px
+            height 24px
+            border-radius 50%
+            background-size cover //将图片等比例缩放，剩下的裁掉
+            flex-shrink 0
+            display inline-block
+            margin-left 10px
+            &:first-child //伪类选择器
+                margin-left 0
+
+
+
+
+
+
+
