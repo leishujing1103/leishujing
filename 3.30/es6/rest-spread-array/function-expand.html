@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>function-expand</title>
+</head>
+<body>
+    <script>
+    function Person(nickName = '未知昵称') {
+        //es5
+        // if(!nickName) {
+        //     nickName = '未知昵称';
+        // }
+        //es6对函数的扩展
+        this.nickName = nickName; //||'未知昵称';
+    }
+    const p1 = new Person('nickName');
+    //p1 {nickName: 'nickName'}
+    const p2 = new Person();
+    //p2 {nickName: 'nickName'}
+    //rest 参数 形式（...是变量名）
+    //获取多余的参数 变量名是数组
+    //把多余的放入这个数组中 a,...args
+    //...args出现的位置只能是最后，像 a,z,...args
+    function sum(a,...args) {
+        console.log(args);
+        // Array.from(arguments)
+        //console.log(arguments);
+
+    }
+    sum(2,4,6,8);
+    
+    </script>
+    
+</body>
+</html>
