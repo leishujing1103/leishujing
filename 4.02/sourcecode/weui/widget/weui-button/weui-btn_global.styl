@@ -1,0 +1,31 @@
+
+.weui-btn
+    position relative
+    display block
+    margin-left auto
+    margin-right auto
+    padding-left 14px
+    padding-right 14px
+    box-sizing border-box
+    font-size $weuiBtnFontSize
+    text-align center
+    text-decoration none
+    color $weuiBtnFontColor
+    line-height unit($weuiBtnHeight/$weuiBtnFontSize ,'')
+    border-radius $weuiBtnBorderRadius
+    setTapColor()
+    overflow hidden
+    &:after
+        content ""
+        position absolute
+        top 0
+        left 0
+        width 200%  //如果1px在高清手机上太粗 1px solid ...
+        height 200%  //宽高放大到两倍
+
+        border 1px solid rgba(0,0,0,.2)
+        transform scale(0.5) //缩放
+        transform-origin 0 0  //基点不变
+        box-sizing border-box
+        border-radius $weuiBtnBorderRadius*2 //圆角要跟上
+
