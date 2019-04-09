@@ -101,39 +101,26 @@
         </section>
         <!-- section4 -->
         <section class="movie-booking section-seperate section-expander">
-                <p class="section-til">票房</p>
-                <div class="weui-flex">
-                    <div class="weui-flex__item">
-                        <div class="placeholder">
-                            <span>1</span>
-                            <p>昨日票房排行</p>
-                        </div>
-                    </div>
-                    <div class="weui-flex__item">
-                        <div class="placeholder">
-                            <span>8004</span>
-                            <p>首周票房(万)</p>
-                        </div>
-                    </div>
-                    <div class="weui-flex__item">
-                        <div class="placeholder">
-                            <span>24316</span>
-                            <p>累计票房(万)</p>
-                        </div>
+            <p class="section-til">票房</p>
+            <div class="weui-flex">
+                <div class="weui-flex__item">
+                    <div class="placeholder"> 
+                        <span>2312</span>昨日票房排行
                     </div>
                 </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder">
+                        <span>232</span>首周票房（万）
+                    </div>
+                </div>
+                <div class="weui-flex__item">
+                    <div class="placeholder">
+                        <span>2312</span>累计票房（万）
+                    </div>
+                </div>
+            </div>
     
         </section>
-        <!-- section5 -->
-        <section class="movie-photo section-seperate">
-            <p class="action-list section-till">视频和剧照</p>
-            <ul class="movie-photo__lists">
-                <!-- <li class="stage-img-container">
-                    <img src="http://p1.meituan.net/moviemachine/6e06b1eee9a74c9573fdb8150fb8561271624.jpg" alt="">
-                </li> -->
-            </ul>
-        </section>
-    
         <!-- toast -->
         <div id="toast">
             <div class="weui-mask_transparent"></div>
@@ -161,10 +148,9 @@
                     $('.address-time .time').html(res.data.time)
                     $('.movie-detail .date').html(res.data.date)
                     $('.text-expander__content p').html(res.data.desc)
-
                     celebrity(res.data.person)
-                    booking(res.data.booking)
-                    photo(res.data.pictures)
+                    // booking(res.data.booking)
+                    // photo(res.data.pictures)
                 }
             })
             function star(e) {
@@ -216,26 +202,6 @@
                 </li>`)
                 }
             }
-       
-        function booking(e) {
-            $('#ranking').html(e.ranking)
-            $('#bookingWeek').html(e.bookingWeek)
-            $('#bookingTotal').html(e.bookingTotal)
-         }
-
-        function photo(e){
-            for(let m of e){
-            $('.movie-photo__lists').append(`<li class="stage-img-container">
-                <a href="#" class="link">
-                    <div class="movie-celebrities__pic">
-                        <img src="${m}" alt="">
-                    </div>
-                </a>
-                </li>`)
-        }
-      }
-
-        
         })()
     </script>
 </body>
