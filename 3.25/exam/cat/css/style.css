@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    height: 100vh;
+    width: 100vw;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-image: -webkit-gradient(linear, left bottom, right top, from(lightgreen), to(lightblue));
+}
+
+.cat{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 117px;
+    height: 201px;
+    background-image: url("../images/body.png");
+}
+
+.tail {
+    position: absolute;
+    top: -185px;
+    left: -15px;
+    width: 64px;
+    height: 194px;
+    background-image: url("../images/tail.png");
+    transform-origin: 28px 184px;
+    animation: wave 5s ease-in-out infinite;
+}
+
+.claw {
+    position: absolute;
+    top: 193px;
+    left: 54px;
+    width: 34px;
+    height: 81px;
+    background-image: url("../images/claw.png");
+    transform-origin: 20px 3px;
+    animation: wave 5s ease-in-out infinite;
+}
+
+.mao_yan1 {
+    position: absolute;
+    top: 178px;
+    left: 79px;
+    width: 3px;
+    height: 3px;
+    background-image: url("../images/maoyan1.png");
+}
+
+.mao_yan2 {
+    position: absolute;
+    top: 186px;
+    left: 93px;
+    width: 3px;
+    height: 3px;
+    background-image: url("../images/maoyan2.png");
+}
+
+.mao_zui {
+    position: absolute;
+    top: 190px;
+    left: 83px;
+    width: 4px;
+    height: 3px;
+    background-image: url("../images/maozui.png");
+}
+
+@keyframes wave {
+    0% {
+        transform: rotateZ(-5deg)
+    }
+    50% {
+        transform: rotateZ(5deg)
+    }
+    100% {
+        transform: rotateZ(-5deg)
+    }
+}
