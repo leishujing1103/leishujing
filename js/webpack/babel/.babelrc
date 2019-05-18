@@ -1,0 +1,4 @@
+{
+    "presets": ["env"],  //默认变成es5
+    "plugins": ["transform-object-rest-spread"]
+}
