@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="" id="app">
+        <!-- {{message}}
+        <p class="coll">臭猪</p>
+
+        <p class="good" v-bind:class="{cool: isGood}">天气真好</p>
+        <p class="good" v-bind:class="isGood ? 'cool' : 'notGood'">天气真好</p>
+        <p class="coll" v-bind:class="[activeClass]">臭猪</p> -->
+
+        <!-- <ul>
+            <li v-for="a in todos">{{a.text}}</li>
+        </ul> -->
+
+        <!--双向数据渲染 
+        <p>{{content}}</p>
+        <input type="text" v-model="content">   -->
+
+        <!-- 绑定事件v-on  -->
+        <p class="coll" v-on:click="reverseMsg">{{msg}}</p>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',  // 作用域某个容器（一般是最外层）
+        data: {
+            // message: 'hello world',
+            // isGood: false,
+            // activeClass: 'active',
+
+            // todos: [
+            //     {text: '学习Vue'},
+            //     {text: '学习js'},
+            //     {text: '写项目'},
+            // ]
+            msg: 'abc',
+            content: ''
+        },
+        // 事件方法 写在methods里
+        methods: {
+            reverseMsg() {
+                //split('') 用空格切割开，reverse()倒转，join('')装回来
+                this.msg = this.msg.split('').reverse().join('')  
+            }
+        }
+    })
+</script>
+</html>
