@@ -9,16 +9,31 @@
         <i class="icon">&#xe63c;</i>
       </router-link>
     </v-header>
+    
+    <!-- tab -->
+     <v-tab></v-tab>  <!-- 保存上一个路由组件浏览的页面-->
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+
+    <!-- play -->
+    <!-- sidebar -->
+    <v-sidebar></v-sidebar>
+
   </div>
 </template>
 
 <script>
 import header from '@/components/header'
+import tab from '@/components/tab'
+import sidebar from '@/components/sidebar'
 
 export default {
   name: 'App',
   components: {
-    'v-header': header
+    'v-header': header,
+    'v-tab': tab,
+    'v-sidebar': sidebar
   }
 }
 </script>
@@ -43,7 +58,7 @@ html, body
   user-select none
   --webkit-tap-highlight-color transparent  // 高亮
   background rgb(8, 5, 58, 0.9)
-  color #fff
+  color #ffffff
 
   
 </style>
