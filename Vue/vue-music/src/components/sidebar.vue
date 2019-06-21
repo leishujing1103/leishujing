@@ -9,7 +9,7 @@
            </div>
            <div class="menu">
                <ul>
-                   <li>
+                   <li @click="_hidebar">
                        <router-link to="./user" @click="_hidebar">
                         <i class="icon">&#xe63c;</i>
                         <span>个人中心</span>
@@ -48,18 +48,29 @@
                </ul>
            </div>
        </div>
+       <div v-show="showSidebar" class="sidebar_mask" @click="_hidebar"></div>
     </div> 
 </template>
 
 <script>
+import { mapGetters } from 'vuex'  //mapGetters能把vue仓库内的getters里的方法全部解构出来
 export default {
     data () {
         return {
-            showSidebar: true
+            
         }
     },
+    computed: {
+      //拿到了getters方法里的showSidebar
+      ...mapGetters([  
+        'showSidebar'
+      ])
+    },
     methods: {
-        _hidebar() {}
+        _hidebar() {
+          // console.log()
+          this.$store.dispatch('setShowSidebar', false) //调用action里面的方法
+        }
     }
 }
 </script>
