@@ -69,7 +69,7 @@ export default {
     methods: {
         _hidebar() {
           // console.log()
-          this.$store.dispatch('setShowSidebar', false) //调用action里面的方法
+          this.$store.dispatch('setShowSidebar', true) //调用action里面的方法
         }
     }
 }
