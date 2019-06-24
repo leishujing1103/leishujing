@@ -4,6 +4,7 @@
         <input type="text" ref="query" v-model="query" class="box" :placeholder="placeholder">
         <i class="icon icon-dismiss" v-show="query" @click="clear"></i>
     </div>
+    
 </template>
 
 <script>
