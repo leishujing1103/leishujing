@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { debounce } from '@/common/util'
 export default {
     props: {
        placeholder: {
@@ -30,6 +31,11 @@ export default {
         blur () {
             this.$refs.query.blur()
         }
+    },
+    created () {
+        this.$watch('query', debounce((newQuery)=> {
+            this.$emit('query',newQuery)
+        }))
     }
 }
 </script>
