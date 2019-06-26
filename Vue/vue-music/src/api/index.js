@@ -61,5 +61,9 @@ export default {
   // 歌曲搜索
   MusicSearch (params) {
     return fetchGet('/search', params)
+  },
+  // 热门搜索
+  HotSearchKey () {
+    return fetchGet('/search/hot')
   }
 }
