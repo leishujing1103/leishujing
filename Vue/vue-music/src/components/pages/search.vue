@@ -51,6 +51,7 @@ import searchList from '@/components/searchList'
 import suggest from '@/components/suggest'
 import api from '@/api'
 import { mapGetters } from 'vuex'
+import { searchMixin} from '@/common/mixin.js'
 export default {
   data() {
     return {
@@ -69,6 +70,7 @@ export default {
       'searchHistory'
     ])
   },
+  mixins: [searchMixin],
   methods: {
     showConfirm() {},
     saveSearch (data) {
