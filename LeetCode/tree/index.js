@@ -50,7 +50,7 @@ function levelOrderTraversal(root) {
 
 // levelNodes []
 
-// while 循环后  
+// while 循环后 的变化 
 // queue [null,9,20]   [9,20,null]     [20,null]  [null,14,7]
 // item []             [[3]]           [[3]]      [[3],[9]]
 // levelNodes [3]      []              [9]        []
