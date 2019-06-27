@@ -29,7 +29,8 @@ export const searchMixin = {
             this.saveSearchHistory(this.query)
         },
         ...mapActions([
-            'saveSearchHistory' // 调用actions
+            'saveSearchHistory',// 调用actions
+            'selectPlaySong'
         ])
     }
 }
