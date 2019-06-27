@@ -2,7 +2,7 @@
   <div class="search">
     <div class="search-box-wrapper">
       <!-- 搜索框 -->
-      <v-search-box @query="onQueryChange"></v-search-box>
+      <v-search-box @query="onQueryChange" ref="searchBox"></v-search-box>
     </div>
     <div class="shortcut-wrapper" ref="shortcutWrapper" v-show="!query">
       
@@ -32,15 +32,15 @@
               </span>
             </h1>
             <!-- 搜索历史列表 -->
-            <v-searchList :searches="searchHistory"></v-searchList>
+            <v-searchList :searches="searchHistory" @select="addQuery"></v-searchList>
           </div>
         </div>
       </v-scroll>
     </div>
     <!-- 搜索结果 -->
     <div class="search-result" v-show="query" ref="searchResult">
-			<v-suggest :query="query" @listScroll="blurInput" @select="saveSearch" ref="suggest"></v-suggest>
-		</div>
+      <v-suggest :query="query" @listScroll="blurInput" @select="saveSearch" ref="suggest"></v-suggest>
+    </div>
   </div> 
 </template>
 
@@ -50,22 +50,19 @@ import scroll from '@/components/scroll'
 import searchList from '@/components/searchList'
 import suggest from '@/components/suggest'
 import api from '@/api'
-import { mapGetters } from 'vuex' 
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-      query: '',
       shortcut: [],
-      
-      hotKey: [],
-			refreshDelay: 2
+      hotKey: []
     }
   },
   components: {
     'v-search-box': searchBox,
     'v-scroll': scroll,
-		'v-searchList': searchList,
-		'v-suggest': suggest
+    'v-searchList': searchList,
+    'v-suggest': suggest
   },
   computed: {
     ...mapGetters([
@@ -73,30 +70,23 @@ export default {
     ])
   },
   methods: {
-		showConfirm() {},
-		onQueryChange(query) {
-			// console.log(query)
-			this.query = query
-    },
-    blurInput() {},
-    saveSearch(data) {
-      this.$store.dispatch('saveSearchHistory', data)
+    showConfirm() {},
+    saveSearch (data) {
       console.log(data)
+      this.$store.dispatch('saveSearchHistory', data)
     },
     _getHotKey () {
       api.HotSearchKey().then((res) => {
         if (res.code === 200) {
-
-          this.hotKey = res.result.hots.slice(0,10)
+          this.hotKey = res.result.hots.slice(0, 10)
         }
       })
-    },
-    
+    }
   },
   created () {
     this._getHotKey()
-    
   }
+
 }
 </script>
 

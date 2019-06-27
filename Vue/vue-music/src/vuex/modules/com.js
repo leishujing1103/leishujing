@@ -18,6 +18,7 @@ const mutations = {  //通过mutation来修改数据源里的字段（定义一�
     [types.COM_SAVE_SEARCH_HISTORY] (state= state) {
         state.searchHistory = state
     }
+    
 }
 
 const actions = {  //通过action来调用这个方法
