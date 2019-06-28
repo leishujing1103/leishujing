@@ -5,9 +5,7 @@
       <v-search-box @query="onQueryChange" ref="searchBox"></v-search-box>
     </div>
     <div class="shortcut-wrapper" ref="shortcutWrapper" v-show="!query">
-      
-      <v-scroll class="shortcut" ref="shortcut" 
-      :data="shortcut" :refreshDelay="refreshDelay">
+      <v-scroll class="shortcut" ref="shortcut" :data="shortcut" :refreshDelay="refreshDelay">
         <div>
           <!-- 热门搜索 -->
           <div class="hot-key">
@@ -32,7 +30,7 @@
               </span>
             </h1>
             <!-- 搜索历史列表 -->
-            <v-searchList :searches="searchHistory" @select="addQuery"></v-searchList>
+            <v-search-list :searches="searchHistory" @select="addQuery"></v-search-list>
           </div>
         </div>
       </v-scroll>
@@ -41,7 +39,7 @@
     <div class="search-result" v-show="query" ref="searchResult">
       <v-suggest :query="query" @listScroll="blurInput" @select="saveSearch" ref="suggest"></v-suggest>
     </div>
-  </div> 
+  </div>
 </template>
 
 <script>
@@ -51,9 +49,9 @@ import searchList from '@/components/searchList'
 import suggest from '@/components/suggest'
 import api from '@/api'
 import { mapGetters } from 'vuex'
-import { searchMixin} from '@/common/mixin.js'
+import { searchMixin } from '@/common/mixin.js'
 export default {
-  data() {
+  data () {
     return {
       shortcut: [],
       hotKey: []
@@ -62,21 +60,12 @@ export default {
   components: {
     'v-search-box': searchBox,
     'v-scroll': scroll,
-    'v-searchList': searchList,
+    'v-search-list': searchList,
     'v-suggest': suggest
   },
-  computed: {
-    ...mapGetters([
-      'searchHistory'
-    ])
-  },
-  mixins: [searchMixin],
+  mixins: [searchMixin], //mixins是vue里自带的
   methods: {
-    showConfirm() {},
-    saveSearch (data) {
-      console.log(data)
-      this.$store.dispatch('saveSearchHistory', data)
-    },
+    showConfirm () {},
     _getHotKey () {
       api.HotSearchKey().then((res) => {
         if (res.code === 200) {
@@ -88,7 +77,6 @@ export default {
   created () {
     this._getHotKey()
   }
-
 }
 </script>
 
@@ -129,10 +117,10 @@ export default {
           height px2rem(80px)
           font-size 14px
           color hsla(0, 0%, 100%, 0.5)
-          .text 
+          .text
             flex 1
           .clear
             .icon
               font-size 18px
-              color hsla(0, 0%, 100%, 0.5)
+              color hsla(0, 0%, 100%, 0.3)
 </style>
