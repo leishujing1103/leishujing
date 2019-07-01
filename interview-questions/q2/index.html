@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 关于call， bind， apply -->
+    <script>
+        var a = {
+            user: '蜗牛',
+            fn: function (n, m) {
+                console.log(this.user)
+                console.log(n + m)
+            }
+        }
+        var b = a.fn // 被全局window调用，this指向window 返回
+        // b.apply(a, [0, 2])
+        // b.call()   把b的作用域掰到a，this同步到a
+        // a.fn()    被a调用，this指向a, 返回蜗牛
+        var c = b.bind(a, 5)  // 弱bind传入5，则优先
+        c(3, 4)  //单传3,4则输出7
+    </script>
+</body>
+</html>
