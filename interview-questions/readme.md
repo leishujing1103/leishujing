@@ -47,7 +47,10 @@
    4. map
    5. reduce
 
+# q6. 防抖节流函数原理
    
 
+
+   基础数据类型没有prototype，所以instance不能判断基础数据类型
 
 
