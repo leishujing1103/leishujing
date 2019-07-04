@@ -49,7 +49,9 @@
 
 # q6. 防抖节流函数原理
    
-
+# q7. __proto__ 和 prototype 关联
+   __proto__是每一个实例都有的属性，可以访问[prototype]属性
+   实例的__proto__(隐式原型) 与其构造函数的prototype(显式原形) 指向的是同一个对象
 
    基础数据类型没有prototype，所以instance不能判断基础数据类型
 
