@@ -1,21 +1,12 @@
-# vue-components
+## 组件三要素
+props、slot、event
+数据源里面拿的数据，才需要v-bind:绑定，写死的数据不需要
 
-> A Vue.js project
+子组件emit  this.$emit('on-click', this.msg )
+父组件去v-bind绑定方法 子组件props接收
 
-## Build Setup
+或者子组件 @on-click.native="handleClick"
 
-``` bash
-# install dependencies
-npm install
+兄弟组件通信 vuex放入store仓库
 
-# serve with hot reload at localhost:8080
-npm run dev
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

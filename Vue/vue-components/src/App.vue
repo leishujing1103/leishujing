@@ -7,6 +7,16 @@
 
 <script>
 export default {
+  provide () {
+    return {
+      app: this
+    }
+  },
+  data () {
+    return {
+      user: '萌萌'
+    }
+  },
   name: 'App'
 }
 </script>

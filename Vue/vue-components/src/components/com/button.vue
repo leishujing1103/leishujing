@@ -1,5 +1,5 @@
 <template>
-    <button :class="'i-button-size' + size" :disabled='disabled' @click="handleClick">
+    <button :class="'i-button-size' + size" :disabled='disabled' @click="handleClick" >
         <slot></slot>
     </button>
 </template>
@@ -13,6 +13,7 @@ function oneOf(value, validList) {
     }
     return false   //结束
 }
+import bus from '@/bus/bus'
 export default {
     props: {
         size: {
@@ -28,14 +29,21 @@ export default {
     },
     data () {
         return {
-
+            msg: '我是button组件的数据'
+        }
+    },
+    methods: {
+        handleClick (event) {
+        // this.$emit('on-click', this.msg )
+        //     console.log(123)
+        bus.$emit('todo', this.msg)
         }
     }
 }
 </script>
 
 <style scoped>
-.button{
+button{
     border-radius: 5px;
     cursor: pointer;
     outline: none;
