@@ -25,7 +25,7 @@ export default {
     // type: 分割的部分，即template script style
     methods: {
         getSource(source, type) {
-            const regex = new RegExp(`<${type}>[^>]*>`)
+            const regex = new RegExp(`<${type}[^>]*>`)
             let openingTag = source.match(regex)  // match 检索
             if (!openingTag) {
                 return ""
@@ -34,7 +34,7 @@ export default {
             }
             return source.slice(
                 source.indexOf(openingTag) + openingTag.length,
-                source.lastIndexOf(`<${type}>`)
+                source.lastIndexOf(`</${type}>`)
             )
         },
         splitCode() {
