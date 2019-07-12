@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Notice from './Notice'
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import Notice from './Notice';
 class Notification extends Component {
   // type, content, duration, onClose
   state = {
-    notices: [
-
-    ]
+    notices: []
   }
   generateKey = () => {
     const { notices } = this.state;
-    return `notice-${new Date().getTime()}-${notices.length}`  //当前时间戳-当前长度=唯一的key
+    return `notice-${new Date().getTime()}-${notices.length}`
   }
   addNotice = (notice) => {
-    console.log('notice', notice)
+    console.log('notice', notice);
     const notices = this.state.notices.slice(0);
     const key = this.generateKey();
     notice.key = key;
@@ -21,34 +20,52 @@ class Notification extends Component {
     this.setState({
       notices
     })
+    setTimeout(() => {
+        this.removeNotice(key);
+    }, notice.duration || 2000)
+  }
+  removeNotice = (key) => {
+    let notices = this.state.notices.slice(0);
+    let notice = notices.findIndex(e => e.key === key);
+    if (notice !== -1) {
+        const current = notices[notice];
+        if (current.onClose) current.onClose();
+        notices.splice(notice, 1);
+        this.setState({
+            notices                         
+        })
+    }
   }
   render() { 
-    const { notices } = this.state;
+      const { notices } = this.state;
     return (
       <TransitionGroup className="toast-notification">
-       {
-         notices.map((notice) => {
-           return (
-             <CSSTransition timeout={300} key={notice.key}>
-               <Notice {...notice}/>
-             </CSSTransition>
-           )
-         })
-       }
+      {
+          notices.map((notice) => {
+              return (
+                  <CSSTransition
+                  timeout={300}
+                  key={notice.key}
+                  classNames="toast-notice-wrapper notice"
+                  >
+                      <Notice {...notice} />
+                  </CSSTransition>
+              )
+          })
+      }
       </TransitionGroup>
     );
   }
 }
 /**
  * <App>
- * <Notification />
+ *  <Notification />
  * </App>
  */
- // 可以获取组件的实例
- 
 function createNotification() {
   const div = document.createElement('div');
   document.body.appendChild(div);
+  // 可以获取组件的实例
   const ref = React.createRef();
   ReactDOM.render(<Notification ref={ref}/>, div);
   return {

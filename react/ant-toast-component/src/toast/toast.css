@@ -68,3 +68,22 @@
       transform: rotate(360deg);
   }
 }
+.toast-notice-wrapper.notice-enter {
+  opacity: 0.01;
+  transform: scale(0);
+}
+.toast-notice-wrapper.notice-enter-active {
+  opacity: 1;
+  transform: scale(1); 
+  transition: all 300ms ease-out;
+}
+/* 离开 */
+.toast-notice-wrapper.notice-exit { 
+  opacity: 1;
+  transform: translateY(0);
+}
+.toast-notice-wrapper.notice-exit-active {
+  opacity: 0.01;
+  transform: translateY(-40%);
+  transition: all 300ms ease-out;
+}
