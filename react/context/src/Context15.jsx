@@ -59,7 +59,11 @@ class Context15 extends Component {
 Context15.childContextTypes = {
   theme: propTypes.string
 }
+
 class Message extends Component {
+  shouldComponentUpdate() {
+    return false
+  }
   render() {
     const {text} = this.props;
     return(
