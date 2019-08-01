@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" id="txt">
+    <p id="show-txt"></p>
+  </div>
+  <script>
+    var obj = {}     // 定义一个空对象
+    Object.defineProperty(obj, 'txt', {    // Object一个defineProperty，传入空对象和input的id'txt'
+      get() {         // 两个方法，get() {} 读取input框，直接返回
+        return obj
+      },
+      set(newValue) {   // set() {} 接收input框内容，传入参数newValue
+        newValue = document.getElementById('txt').value   // newValue是一个id为'txt'的值
+        document.getElementById('show-txt').innerHTML = newValue   // 将newValue写入show-txt里的HTML
+      }
+    })
+    document.addEventListener('keyup', function(e) {   // 事件监听'keyup'(输入文字)
+      obj.txt = e.target.value  //给obj加一个属性txt,值为value
+    })
+    
+  </script>
+</body>
+</html>
